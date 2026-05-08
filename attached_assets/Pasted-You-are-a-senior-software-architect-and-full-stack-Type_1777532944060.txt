@@ -1,0 +1,150 @@
+You are a senior software architect and full-stack TypeScript expert.
+
+I have an existing messy full-stack project using:
+
+* Backend: Node.js + Express + TypeScript
+* Frontend: React + Vite + TypeScript
+* Database: PostgreSQL with Drizzle ORM
+* Auth: Passport / sessions (mixed)
+* Other: OpenAI integration, file uploads, dashboard UI
+
+Your task is to REFACTOR and RESTRUCTURE the entire project into a clean, scalable, production-grade architecture.
+
+IMPORTANT RULES:
+
+* Do NOT break existing functionality
+* Do NOT remove features
+* Only reorganize, clean, and improve structure and code quality
+* Follow best practices used in real production SaaS systems
+
+---
+
+🔧 BACKEND REQUIREMENTS:
+
+1. Apply CLEAN ARCHITECTURE:
+
+/server
+/routes        → only route definitions
+/controllers   → handle req/res
+/services      → business logic
+/repositories  → database queries (Drizzle)
+/middlewares   → auth, validation, error handling
+/config        → environment config
+/utils         → helpers
+/types         → shared TS types
+
+2. Move ALL database queries into repositories
+
+3. Move ALL logic out of routes into services
+
+4. Add GLOBAL ERROR HANDLER middleware
+
+5. Add REQUEST VALIDATION using Zod
+
+6. Add SECURITY:
+
+   * helmet
+   * express-rate-limit
+   * cors (configured properly)
+
+7. Create ENV VALIDATION using Zod
+
+8. Standardize API response format:
+   {
+   success: boolean,
+   data?: any,
+   error?: string
+   }
+
+---
+
+🔐 AUTH SYSTEM:
+
+* Simplify authentication
+
+* Either:
+  → Convert to JWT-based auth (preferred)
+  OR
+  → Clean session-based auth (no mixing)
+
+* Add:
+
+  * login
+  * register
+  * protected routes middleware
+
+---
+
+🧠 AI MODULE:
+
+* Move all OpenAI logic into:
+  /services/ai.service.ts
+
+* Create reusable functions:
+
+  * generateText()
+  * analyzeData()
+  * chatbotResponse()
+
+---
+
+📁 FILE UPLOAD MODULE:
+
+* Isolate multer config into:
+  /config/multer.ts
+
+* Add file validation (type + size)
+
+---
+
+⚡ FRONTEND REQUIREMENTS:
+
+/client
+/components
+/pages
+/hooks
+/store
+/services (API calls)
+/types
+
+* Move API calls into a separate service layer
+* Use React Query properly
+* Remove unnecessary prop drilling
+* Organize UI components cleanly
+
+---
+
+📈 ADDITIONAL IMPROVEMENTS:
+
+* Add logging system (Winston or Pino)
+* Add basic unit test setup (Jest or Vitest)
+* Add API documentation (Swagger)
+* Optimize imports and remove unused code
+
+---
+
+🧹 CLEANUP:
+
+* Remove duplicate files
+* Remove unused dependencies
+* Rename unclear variables/functions
+* Ensure consistent naming conventions
+
+---
+
+📦 OUTPUT REQUIRED:
+
+1. Show NEW folder structure
+2. Show REFACTORED sample files:
+
+   * route
+   * controller
+   * service
+   * repository
+3. Show middleware examples
+4. Show improved frontend API call example
+
+---
+
+Think like a senior engineer working at a top tech company.
+Focus on scalability, security, and maintainability.

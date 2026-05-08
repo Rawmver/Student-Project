@@ -1,0 +1,94 @@
+Upgrade my existing full-stack project (React + Vite frontend, Express + Drizzle backend, Replit Auth) by building a secure Admin Panel system.
+
+IMPORTANT:
+This is NOT a Django project. Keep the current Node.js + React structure.
+
+PROJECT STRUCTURE:
+- client/ (React + TypeScript + Vite)
+- server/ (Express backend)
+- shared/ (Drizzle schema)
+- Replit Auth is already configured
+
+GOAL:
+Implement a secure role-based Admin Panel.
+
+-----------------------------------
+1) DATABASE UPDATE
+-----------------------------------
+- Add a "role" column to the users table in shared/schema.ts
+- Default role should be "student"
+- Allow role values: "student" | "admin"
+- Update Drizzle schema properly
+- Ensure migration works correctly
+
+-----------------------------------
+2) BACKEND SECURITY
+-----------------------------------
+In server/routes.ts:
+
+- Create a middleware called requireAdmin
+- It should:
+    - Check if req.user exists
+    - Check if req.user.role === "admin"
+    - If not, return 403 JSON error
+- Protect all admin routes using requireAdmin
+
+-----------------------------------
+3) ADMIN API ROUTES
+-----------------------------------
+Create these secure routes:
+
+GET /api/admin/groups
+    - Returns all groups from database
+
+GET /api/admin/stats
+    - Returns:
+        totalGroups
+        totalStudents (groups × 7)
+
+DELETE /api/admin/groups/:id
+    - Deletes a group
+
+Make sure all routes are protected with requireAdmin middleware.
+
+-----------------------------------
+4) FRONTEND ADMIN PAGE
+-----------------------------------
+In client/src/pages/Admin.tsx:
+
+- Check user role using existing useAuth hook
+- If user not logged in → show loading
+- If role !== "admin" → show "Access Denied"
+- If admin → show dashboard
+
+Dashboard UI must include:
+- Total Groups card
+- Total Students card
+- Table listing all groups
+- Delete button per row
+- Clean modern UI using existing Tailwind setup
+- Mobile responsive layout
+
+-----------------------------------
+5) SECURITY RULES
+-----------------------------------
+- Do NOT rely only on frontend role check
+- Backend must enforce admin access
+- Return proper HTTP status codes
+- Handle errors properly
+
+-----------------------------------
+6) OPTIONAL (BONUS)
+-----------------------------------
+- Add Excel export endpoint
+- Add search filter on admin page
+- Add loading states
+- Add confirmation modal before delete
+
+-----------------------------------
+FINAL REQUIREMENTS
+-----------------------------------
+- Provide complete working code changes
+- Follow current project structure
+- Do not break existing student submission flow
+- Keep everything production-ready

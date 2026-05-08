@@ -1,0 +1,84 @@
+Build a full production-ready Django web application called "Student Group Dashboard System".
+
+PROJECT REQUIREMENTS:
+
+1) STUDENT SIDE (Main Page)
+- Mobile-first responsive design (looks like real mobile app).
+- Clean modern UI with animations.
+- University logo at top.
+- When page loads, show popup modal with rules.
+- After closing modal, show group submission form.
+
+FORM STRUCTURE:
+- 1 Group Leader (Name + ID)
+- 6 Members (Name + ID each)
+- Total = 7 members per group
+- All ID fields must be unique (no duplicates inside group).
+- Leader ID must be unique across database.
+- Submit button at bottom.
+
+FEATURES:
+- Submission deadline system (if expired show "Submission Closed" page).
+- Countdown timer displayed on top.
+- Show success message after submission.
+- Email confirmation (console backend for development).
+- Prevent duplicate submissions.
+
+2) ADMIN SIDE
+- Secure admin-only dashboard.
+- Show:
+    - Total number of groups
+    - Total number of students (groups × 7)
+- Table view of all submissions.
+- Button to export all data to Excel (.xlsx).
+- Clean dashboard cards UI.
+- Mobile responsive layout.
+
+3) PWA (Progressive Web App)
+- Add manifest.json
+- Add service worker
+- Installable on mobile (Add to Home Screen)
+- Standalone display mode
+- App icon (logo.png)
+
+4) DESIGN REQUIREMENTS
+- Use Bootstrap 5.
+- Use Google Font (Poppins).
+- Rounded cards, shadow, modern gradient background.
+- Bottom mobile navigation bar.
+- Smooth fade-in animations.
+- App-like header.
+- Fully responsive (mobile + desktop).
+
+5) BACKEND REQUIREMENTS
+- Django project structure:
+    student_dashboard/
+        settings.py
+        urls.py
+    groups/
+        models.py
+        views.py
+        forms.py
+        urls.py
+        templates/
+- SQLite database.
+- Use ModelForm.
+- Duplicate ID validation.
+- Staff-only admin dashboard view.
+- Excel export using openpyxl.
+- Use Whitenoise for static files.
+
+6) DEPLOYMENT
+- Ready to run on Replit.
+- Include requirements.txt.
+- Include .replit run command using gunicorn.
+- DEBUG = False.
+- ALLOWED_HOSTS configured for replit.app domain.
+
+7) EXTRA POLISH
+- Countdown timer using JavaScript.
+- Confirmation popup on successful submission.
+- Clean error messages.
+- Production-ready code (no placeholders).
+
+Generate full project files with correct folder structure and complete working code.
