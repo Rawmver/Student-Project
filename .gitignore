@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+server/public/
+
+# Local env (never commit secrets!)
+.env
+.env.local
+.env.*.local
+
+# Uploads (user-generated)
+uploads/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Replit-specific runtime / cache (safe to ignore on other hosts)
+.cache/
+.upm/
+.config/
+.local/
+.agents/
+
+# Misc
+*.tar.gz
+vite.config.ts.*
