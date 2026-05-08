@@ -1,0 +1,23 @@
+{
+  "name": "Student Group Dashboard",
+  "short_name": "GroupDash",
+  "description": "Submit and manage student group assignments",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f5f3ff",
+  "theme_color": "#7c3aed",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "serviceworker": {
+    "src": "/sw.js"
+  }
+}

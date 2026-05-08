@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Poppins', sans-serif;
+  
+  /* Modern Purple/Indigo Theme */
+  --background: 240 20% 97%;
+  --foreground: 240 10% 3.9%;
+  
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  
+  --primary: 255 85% 60%;
+  --primary-foreground: 0 0% 98%;
+  
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  
+  --accent: 255 85% 96%;
+  --accent-foreground: 240 5.9% 10%;
+  
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 255 85% 60%;
+  
+  --radius: 1rem;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  
+  --primary: 255 85% 60%;
+  --primary-foreground: 0 0% 98%;
+  
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 255 85% 60%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: var(--font-sans);
+    background-image: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+    background-attachment: fixed;
+  }
+  
+  /* Light mode override for background gradient */
+  :root[class~="light"] body {
+     background-image: radial-gradient(at 0% 0%, hsla(255,85%,96%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,100%,96%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,100%,96%,1) 0, transparent 50%);
+  }
+}
+
+/* Custom Glassmorphism Card */
+.glass-card {
+  @apply bg-white/80 dark:bg-black/40 backdrop-blur-md border border-white/20 shadow-xl;
+}
+
+/* Smooth transitions */
+.page-transition {
+  @apply animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out;
+}
+
+/* Floating orb animation */
+@keyframes float-orb {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(40px, -60px) scale(1.1); }
+  66%  { transform: translate(-30px, 40px) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes float-orb-2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(-50px, 30px) scale(1.08); }
+  66%  { transform: translate(35px, -50px) scale(0.92); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes float-orb-3 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(25px, 45px) scale(1.05); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Shimmer text sweep */
+@keyframes shimmer-sweep {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    hsl(255 85% 60%),
+    hsl(280 90% 70%),
+    hsl(220 90% 70%),
+    hsl(255 85% 60%),
+    hsl(300 80% 70%),
+    hsl(255 85% 60%)
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-sweep 4s linear infinite;
+}
+
+/* Pulsing glow button */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(255 85% 60% / 0.5), 0 0 20px 2px hsl(255 85% 60% / 0.3); }
+  50%       { box-shadow: 0 0 0 10px hsl(255 85% 60% / 0), 0 0 30px 6px hsl(255 85% 60% / 0.5); }
+}
+.btn-pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Animated gradient card border */
+@keyframes border-spin {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animated-border-card {
+  position: relative;
+  background: white;
+}
+.dark .animated-border-card {
+  background: hsl(240 10% 8%);
+}
+.animated-border-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--radius) + 2px);
+  background: linear-gradient(120deg, hsl(255 85% 60%), hsl(280 90% 70%), hsl(200 90% 65%), hsl(300 80% 65%), hsl(255 85% 60%));
+  background-size: 300% 300%;
+  animation: border-spin 5s ease infinite;
+  z-index: -1;
+}
+
+/* Floating sparkle dots */
+@keyframes sparkle-float {
+  0%   { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+  50%  { transform: translateY(-15px) rotate(180deg); opacity: 1; }
+  100% { transform: translateY(0px) rotate(360deg); opacity: 0.7; }
+}
+
+/* Badge bounce */
+@keyframes badge-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+.badge-bounce {
+  animation: badge-bounce 2s ease-in-out infinite;
+}
+
+/* Entrance wave */
+@keyframes wave-in {
+  0%   { opacity: 0; transform: translateY(30px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.wave-in {
+  animation: wave-in 0.5s ease-out forwards;
+}
